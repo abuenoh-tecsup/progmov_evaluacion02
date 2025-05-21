@@ -2,11 +2,11 @@ package com.bueno.alvaro.laboratoriocalificado02
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.bueno.alvaro.laboratoriocalificado02.databinding.ActivityEjercicio01Binding
 import com.bueno.alvaro.laboratoriocalificado02.databinding.ActivityEjercicio02Binding
 
 class Ejercicio02 : AppCompatActivity() {
@@ -31,7 +31,6 @@ class Ejercicio02 : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
     }
 
     override fun onResume() {
@@ -41,7 +40,24 @@ class Ejercicio02 : AppCompatActivity() {
 
     private fun observeButtons() {
         binding.btnRegistrar.setOnClickListener {
-            goDetailActivity()
+            if (validateInputs()) {
+                goDetailActivity()
+            }
+        }
+    }
+
+    private fun validateInputs(): Boolean {
+        val nombreCliente = binding.etNombreCliente.text.toString().trim()
+        val numeroCliente = binding.etNumeroCliente.text.toString().trim()
+        val productos = binding.etProductos.text.toString().trim()
+        val ciudad = binding.etCiudad.text.toString().trim()
+        val direccion = binding.etDireccion.text.toString().trim()
+
+        return if (nombreCliente.isEmpty() || numeroCliente.isEmpty() || productos.isEmpty() || ciudad.isEmpty() || direccion.isEmpty()) {
+            Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show()
+            false
+        } else {
+            true
         }
     }
 
