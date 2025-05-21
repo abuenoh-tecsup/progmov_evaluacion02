@@ -16,9 +16,6 @@
             android:name=".Ejercicio02Detail"
             android:exported="false" />
         <activity
-            android:name=".Ejercicio02Intent"
-            android:exported="false" />
-        <activity
             android:name=".Ejercicio02"
             android:exported="true">
             <intent-filter>
@@ -29,7 +26,7 @@
         </activity>
         <activity
             android:name=".Ejercicio01"
-            android:exported="true"></activity>
+            android:exported="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
